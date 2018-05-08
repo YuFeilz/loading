@@ -1,0 +1,90 @@
+.loader {
+    color: #fff;
+    position: fixed;
+    box-sizing: border-box;
+    left: -9999px;
+    top: -9999px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: 999999
+}
+
+.loader:after,
+.loader:before {
+    box-sizing: border-box
+}
+
+.loader.is-active {
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0
+}
+
+@keyframes circle {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(359deg)
+    }
+}
+
+.loader:before {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    color: currentColor;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+    font-size: 14px
+}
+
+.loader:before {
+    content: '正在加载...'
+}
+
+.loader-circle:before {
+    top: calc(50% - 63px)
+}
+
+.loader-circle:after {
+    content: '';
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: solid 6px #fff;
+    border-left-color: transparent;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    animation: circle 1s linear infinite;
+    -webkit-animation: circle 1s linear infinite;
+}
+
+@keyframes square {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(-180deg, 0)
+    }
+    100% {
+        transform: rotateZ(-180deg, 0)
+    }
+}
+
+.loader-square:after {
+    content: '';
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    top: calc(50%-20px);
+    left: calc(50%-20px);
+    animation: square 1s linear infinite;
+    -webkit-animation: square 1s linear infinite;
+}
