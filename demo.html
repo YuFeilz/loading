@@ -11,8 +11,10 @@
     <style>
         html,
         body,
-        div.input,
-        label {
+        div,
+        input,
+         :before,
+         :after {
             margin: 0;
             padding: 0;
             font-size: 14px;
@@ -56,11 +58,17 @@
     <div id="loading" class="loader"></div>
     <script>
         $(function() {
+            var timer = null;
             $('.click-item').each(function() {
-                $(this).click(function() {
-                    var _thisAttr = $(this).data('type');
-                    $('#loading').addClass('loader-' + _thisAttr + ' is-active');
+                    $(this).click(function(e) {
+                        e.stopPropagation(); //需阻止事件冒泡
+                        var _thisAttr = $(this).data('type');
+                        $('#loading').addClass('loader-' + _thisAttr + ' is-active');
+                    })
                 })
+                // 点击屏幕任意处停止动画
+            $(document).click(function() {
+                $('#loading')[0].className = 'loader';
             })
         })
     </script>
